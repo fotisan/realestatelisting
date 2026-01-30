@@ -1,0 +1,297 @@
+:root{
+  --text: rgba(20, 24, 33, .92);
+  --muted: rgba(20, 24, 33, .68);
+
+  --glassA: rgba(255,255,255,.22);
+  --glassB: rgba(255,255,255,.14);
+  --stroke: rgba(255,255,255,.42);
+
+  --shadowA: 0 18px 50px rgba(15, 18, 26, .22);
+  --shadowB: 0 10px 30px rgba(15, 18, 26, .18);
+
+  --radius: 22px;
+  --radius-lg: 28px;
+
+  --btn1: rgba(40, 86, 160, .95);
+  --btn2: rgba(40, 86, 160, .75);
+  --btnText: rgba(255,255,255,.96);
+
+  --focus: rgba(30, 100, 255, .55);
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: #0b0f1a;
+}
+
+/* Full-screen hero */
+.hero{
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 22px 14px 34px;
+  overflow: hidden;
+}
+
+/* Background image (same folder) */
+.hero__bg{
+  position: absolute;
+  inset: 0;
+  background-image: url("./villa-bg.webp");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+/* Soft overlay for readability */
+.hero__bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,.10), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(10, 15, 26, .35) 0%, rgba(10, 15, 26, .18) 35%, rgba(10, 15, 26, .42) 100%);
+}
+
+/* Glass main card */
+.card{
+  position: relative;
+  width: min(720px, 100%);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--glassA), var(--glassB));
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadowA);
+  padding: 18px 16px 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@supports not ((backdrop-filter: blur(14px)) or (-webkit-backdrop-filter: blur(14px))){
+  .card{ background: rgba(255,255,255,.28); }
+}
+
+.card__header{
+  padding: 10px 10px 14px;
+  border-radius: calc(var(--radius-lg) - 6px);
+}
+
+.card__title{
+  margin: 6px 0 14px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  line-height: 1.07;
+  font-size: clamp(28px, 5.5vw, 46px);
+  color: rgba(14, 18, 28, .88);
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+.card__title--muted{
+  font-weight: 650;
+  color: rgba(14, 18, 28, .82);
+}
+
+/* Benefits list */
+.benefits{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 14px;
+  display: grid;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.benefits__item{
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 15.5px;
+  line-height: 1.35;
+  color: rgba(14, 18, 28, .80);
+}
+
+.benefits__item strong{
+  font-weight: 750;
+  color: rgba(14, 18, 28, .86);
+}
+
+/* Check icon pill */
+.icon--check{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: rgba(22, 92, 190, .92);
+  background: rgba(255,255,255,.22);
+  border: 1px solid rgba(255,255,255,.42);
+  box-shadow: 0 6px 18px rgba(15, 18, 26, .10);
+}
+
+/* Chips */
+.chips{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  margin: 10px auto 0;
+  max-width: 560px;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.22);
+  border: 1px solid rgba(255,255,255,.42);
+  box-shadow: 0 10px 25px rgba(15, 18, 26, .14);
+  color: rgba(14, 18, 28, .82);
+}
+
+.chip__icon{
+  color: rgba(14, 18, 28, .70);
+  display: grid;
+  place-items: center;
+}
+
+.chip--price{
+  justify-content: center;
+}
+
+/* Form glass */
+.formWrap{
+  margin-top: 12px;
+  padding: 14px 10px 6px;
+}
+
+.form{
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px 14px 12px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, var(--glassA), var(--glassB));
+  border: 1px solid rgba(255,255,255,.40);
+  box-shadow: var(--shadowB);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.field{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.22);
+  border: 1px solid rgba(255,255,255,.38);
+}
+
+.field__icon{
+  color: rgba(14, 18, 28, .55);
+  display: grid;
+  place-items: center;
+}
+
+.field__input{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 16px;
+  color: rgba(14, 18, 28, .86);
+}
+
+.field__input::placeholder{
+  color: rgba(14, 18, 28, .45);
+}
+
+.btn{
+  width: 100%;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--btnText);
+  background: linear-gradient(180deg, var(--btn1), var(--btn2));
+  box-shadow: 0 18px 30px rgba(30, 70, 140, .30);
+  cursor: pointer;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+/* Fine print */
+.fineprint{
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(14, 18, 28, .55);
+}
+
+/* Rating pill */
+.rating{
+  margin: 14px auto 4px;
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.20);
+  border: 1px solid rgba(255,255,255,.36);
+  box-shadow: 0 12px 24px rgba(15, 18, 26, .14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.stars{
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgba(216, 152, 35, .95);
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+.rating__text{
+  font-size: 13.5px;
+  color: rgba(14, 18, 28, .62);
+}
+
+/* Focus */
+.field:focus-within{
+  box-shadow: 0 0 0 4px var(--focus);
+  border-color: rgba(255,255,255,.52);
+}
+
+.btn:focus-visible,
+.field__input:focus-visible{
+  outline: none;
+}
+
+.btn:focus-visible{
+  box-shadow: 0 0 0 4px var(--focus), 0 18px 30px rgba(30, 70, 140, .30);
+}
+
+/* Wider screens */
+@media (min-width: 560px){
+  .hero{ padding: 34px 18px 46px; }
+  .card{ padding: 22px 20px 16px; }
+
+  .chips{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px){
+  .card{ transform: translateY(-6px); }
+}
